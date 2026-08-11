@@ -62,13 +62,7 @@ export default function WorkExperienceSection({ onOpenResumeModal }: WorkExperie
         {/* =========================================================================
             HEADER: TITLE & CTA DOWNLOAD CV BUTTON
            ========================================================================= */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-10"
-        >
+        <div className="mb-8 sm:mb-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4 sm:mb-6">
             Expérience<br className="block sm:hidden" /> Professionnelle
           </h2>
@@ -83,19 +77,15 @@ export default function WorkExperienceSection({ onOpenResumeModal }: WorkExperie
             <Download className="w-4 h-4" />
             <span>TÉLÉCHARGER CV</span>
           </a>
-        </motion.div>
+        </div>
 
         {/* =========================================================================
             VERTICAL TIMELINE WRAPPER WITH GLOWING NODES
            ========================================================================= */}
         <div className="relative border-l border-zinc-800/80 ml-3 sm:ml-4 pl-6 sm:pl-8 md:pl-10 space-y-6 sm:space-y-8">
-          {experiencesData.map((exp, index) => (
-            <motion.div
+          {experiencesData.map((exp) => (
+            <div
               key={exp.id}
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
               className="relative group"
             >
               {/* Glowing Red Dot Node attached to vertical timeline */}
@@ -141,7 +131,7 @@ export default function WorkExperienceSection({ onOpenResumeModal }: WorkExperie
                 </div>
 
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

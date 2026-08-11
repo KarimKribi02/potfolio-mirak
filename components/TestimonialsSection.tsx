@@ -128,13 +128,7 @@ export default function TestimonialsSection() {
         {/* =========================================================================
             LEFT COLUMN: Oversized Crimson Quotes & Title
            ========================================================================= */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="lg:col-span-5 flex flex-col items-start"
-        >
+        <div className="lg:col-span-5 flex flex-col items-start">
           {/* Oversized Crimson Red Quote Icon Marks */}
           <div className="flex gap-2 mb-4 sm:mb-8">
             <div className="w-4 h-8 sm:w-6 sm:h-12 bg-[#E50914] rounded-t-sm shadow-[0_0_15px_#E50914]" />
@@ -159,18 +153,12 @@ export default function TestimonialsSection() {
             <span>/</span>
             <span>0{testimonialsData.length}</span>
           </div>
-        </motion.div>
+        </div>
 
         {/* =========================================================================
             RIGHT COLUMN: Interactive Testimonial Slider Card
            ========================================================================= */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-7 flex flex-col justify-center items-start lg:pl-4"
-        >
+        <div className="lg:col-span-7 flex flex-col justify-center items-start lg:pl-4">
           <div className="relative w-full rounded-2xl bg-[#0d0d0d] md:bg-neutral-950/70 border border-zinc-800/80 p-5 sm:p-8 md:p-10 backdrop-blur-md shadow-2xl">
             
             <Quote className="w-12 h-12 sm:w-14 sm:h-14 text-[#E50914]/15 absolute top-5 right-5 sm:top-6 sm:right-6 pointer-events-none" />
@@ -264,7 +252,7 @@ export default function TestimonialsSection() {
             </div>
 
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

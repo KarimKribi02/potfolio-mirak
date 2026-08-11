@@ -67,13 +67,7 @@ export default function ContactSection() {
         {/* =========================================================================
             LEFT COLUMN: Direct Contact Details & Address
            ========================================================================= */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="lg:col-span-5 flex flex-col items-start"
-        >
+        <div className="lg:col-span-5 flex flex-col items-start">
           {/* Section Title */}
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-3 sm:mb-6">
             Contact
@@ -108,18 +102,12 @@ export default function ContactSection() {
           >
             kribimohamedkarim@gmail.com
           </a>
-        </motion.div>
+        </div>
 
         {/* =========================================================================
             RIGHT COLUMN: Minimalist Underline Input Form
            ========================================================================= */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-7 flex flex-col justify-center"
-        >
+        <div className="lg:col-span-7 flex flex-col justify-center">
           {/* Form Heading */}
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-snug mb-6 sm:mb-10">
             Prenons un café et discutons de votre projet{" "}
@@ -215,7 +203,7 @@ export default function ContactSection() {
             </div>
 
           </form>
-        </motion.div>
+        </div>
 
       </div>
     </section>

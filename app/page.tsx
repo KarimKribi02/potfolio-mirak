@@ -66,18 +66,14 @@ export default function Home() {
         <HeroSection onOpenVideoModal={() => setVideoModalOpen(true)} />
       </div>
 
-      {/* 3. Section Reveal Transitions (Snap Sections 2 to N) */}
+      {/* 3. Sections Container (Instant Visibility & No Scroll-Lock) */}
       {revealSections.map((sec) => (
-        <motion.div
+        <div
           key={sec.id}
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.05 }}
-          className="md:snap-start md:snap-always w-full min-h-screen flex flex-col justify-center relative"
+          className="md:snap-start md:snap-always w-full min-h-screen flex flex-col justify-center relative opacity-100"
         >
           {sec.component}
-        </motion.div>
+        </div>
       ))}
 
       {/* Interactive Modals Container */}

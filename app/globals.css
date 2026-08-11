@@ -88,3 +88,18 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #e50914;
 }
+
+/* Mobile Immediate Visibility Safety Net (Prevents Opacity-0 Stuck Animations) */
+@media (max-width: 768px) {
+  section,
+  main,
+  [id="about"],
+  [id="projects"],
+  [id="work-experience"],
+  [id="testimonials"],
+  [id="partners"],
+  [id="contact"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}

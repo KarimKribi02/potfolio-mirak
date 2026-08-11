@@ -63,29 +63,17 @@ export default function PartnersSection() {
         
         {/* Section Heading & Subtitle */}
         <div className="mb-10 sm:mb-16 md:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight"
-          >
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Partenaires <span className="text-[#E50914]">&amp; Clients</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xs sm:text-sm text-neutral-400 font-light mt-2 sm:mt-3 max-w-xl leading-relaxed"
-          >
+          </h2>
+          <p className="text-xs sm:text-sm text-neutral-400 font-light mt-2 sm:mt-3 max-w-xl leading-relaxed">
             Entreprises et plateformes qui nous font confiance pour leurs solutions digitales.
-          </motion.p>
+          </p>
         </div>
 
         {/* 6-Logo Large Grid (3 cols on desktop, 2 cols on mobile) */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 sm:gap-6 md:gap-10 items-center justify-items-center">
-          {partnersData.map((partner, index) => {
+          {partnersData.map((partner) => {
             const CardContent = (
               <div className="w-full h-full flex items-center justify-center p-3.5 sm:p-5 relative">
                 <Image
@@ -99,12 +87,8 @@ export default function PartnersSection() {
             );
 
             return (
-              <motion.div
+              <div
                 key={partner.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
                 className="w-full max-w-[320px] h-28 sm:h-36 md:h-40 rounded-xl sm:rounded-2xl bg-neutral-900/80 border border-neutral-800/90 backdrop-blur-md flex items-center justify-center relative overflow-hidden transition-all duration-300 hover:border-[#E50914]/60 hover:bg-neutral-800 hover:shadow-[0_0_35px_rgba(229,9,20,0.25)] hover:scale-105 group shadow-xl cursor-pointer"
               >
                 {partner.websiteUrl ? (
@@ -120,7 +104,7 @@ export default function PartnersSection() {
                 ) : (
                   CardContent
                 )}
-              </motion.div>
+              </div>
             );
           })}
         </div>

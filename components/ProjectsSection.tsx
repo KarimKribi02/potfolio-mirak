@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 export interface Project {
@@ -107,6 +106,16 @@ export const projectsData: Project[] = [
 export default function ProjectsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
 
   const nextSlide = useCallback(() => {
     setDirection(1);
@@ -157,62 +166,64 @@ export default function ProjectsSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E50914]/5 blur-[180px] rounded-full pointer-events-none z-0" />
 
       {/* =========================================================================
-          DYNAMIC BACKGROUND MEDIA LAYER (DESKTOP ONLY)
+          DYNAMIC BACKGROUND MEDIA LAYER (DESKTOP ONLY - NEVER MOUNTED ON MOBILE)
          ========================================================================= */}
-      <AnimatePresence mode="wait">
-        {currentProject.videoBg ? (
-          <motion.div
-            key={`video-${currentProject.id}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="hidden md:block absolute inset-0 z-0 pointer-events-none overflow-hidden"
-          >
-            {/* Desktop-Only High-Performance Video Player */}
-            <video
-              key={currentProject.videoBg}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="none"
-              className="absolute inset-0 h-full w-full object-cover z-0 opacity-60"
-              src={currentProject.videoBg}
+      {isDesktop && (
+        <AnimatePresence mode="wait">
+          {currentProject.videoBg ? (
+            <motion.div
+              key={`video-${currentProject.id}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="hidden md:block absolute inset-0 z-0 pointer-events-none overflow-hidden"
             >
-              <source src={currentProject.videoBg} type="video/mp4" />
-            </video>
+              {/* Desktop-Only High-Performance Video Player with preload="none" */}
+              <video
+                key={currentProject.videoBg}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="none"
+                className="absolute inset-0 h-full w-full object-cover z-0 opacity-60"
+                src={currentProject.videoBg}
+              >
+                <source src={currentProject.videoBg} type="video/mp4" />
+              </video>
 
-            {/* Contrast Overlay */}
-            <div className="absolute inset-0 bg-black/40 z-[1] pointer-events-none" />
-          </motion.div>
-        ) : (
-          <motion.div
-            key={`watermark-${currentProject.id}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none flex-col items-center justify-center opacity-[0.07]"
-          >
-            <div className="w-64 h-64 sm:w-96 sm:h-96 md:w-[480px] md:h-[480px] rounded-full border-[8px] sm:border-[12px] border-white flex items-center justify-center relative">
-              <span className="text-7xl sm:text-[160px] font-black text-white tracking-tighter">
-                {currentProject.title.slice(0, 2)}
+              {/* Contrast Overlay */}
+              <div className="absolute inset-0 bg-black/40 z-[1] pointer-events-none" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key={`watermark-${currentProject.id}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none flex-col items-center justify-center opacity-[0.07]"
+            >
+              <div className="w-64 h-64 sm:w-96 sm:h-96 md:w-[480px] md:h-[480px] rounded-full border-[8px] sm:border-[12px] border-white flex items-center justify-center relative">
+                <span className="text-7xl sm:text-[160px] font-black text-white tracking-tighter">
+                  {currentProject.title.slice(0, 2)}
+                </span>
+              </div>
+              <span className="text-5xl sm:text-9xl font-black tracking-widest text-white mt-4 uppercase">
+                {currentProject.watermarkText || currentProject.title}
               </span>
-            </div>
-            <span className="text-5xl sm:text-9xl font-black tracking-widest text-white mt-4 uppercase">
-              {currentProject.watermarkText || currentProject.title}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
 
       {/* =========================================================================
-          1. MOBILE VIEW: APP SHOWCASE CARD WITH EMBEDDED FRAME (BLOCK MD:HIDDEN)
+          1. MOBILE VIEW: CLEAN DARK BENTO SHOWCASE CARD (BLOCK MD:HIDDEN)
          ========================================================================= */}
       <div className="block md:hidden w-full max-w-md mx-auto z-10 relative">
         {/* Section Header with Navigation Arrows */}
-        <div className="flex items-center justify-between mb-3.5 px-1">
+        <div className="flex items-center justify-between mb-4 px-1">
           <div className="flex items-center gap-2">
             <span className="w-3.5 h-[2px] bg-[#E50914]" />
             <h2 className="text-lg font-extrabold text-white tracking-wide">
@@ -237,7 +248,7 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Animated Showcase Card */}
+        {/* Animated Showcase Card (Zero Heavy Media Overhead) */}
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={`mobile-card-${currentProject.id}`}
@@ -247,55 +258,44 @@ export default function ProjectsSection() {
             animate="center"
             exit="exit"
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="bg-[#0d0d0d] border border-zinc-800/80 rounded-3xl p-4 sm:p-5 shadow-2xl flex flex-col gap-3"
+            className="bg-[#0d0d0d] border border-zinc-800/80 rounded-3xl p-5 shadow-2xl flex flex-col gap-4"
           >
-            {/* Embedded Static Preview Cadre Frame (0 Video Overhead on Mobile) */}
-            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-zinc-800/80 bg-zinc-950 shadow-inner">
-              <Image
-                src={currentProject.thumbnail}
-                alt={currentProject.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 400px"
-                className="object-cover transition-transform duration-500 hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-            </div>
-
-            {/* Content Details */}
-            <div className="pt-1">
-              <span className="text-[10.5px] font-bold text-[#E50914] tracking-wider uppercase block mb-1">
+            {/* Category Tag & Title */}
+            <div>
+              <span className="text-[11px] font-bold text-[#E50914] tracking-wider uppercase block mb-1.5">
                 {currentProject.category}
               </span>
-              <h3 className="text-xl font-bold text-white mb-1.5 leading-snug">
+              <h3 className="text-2xl font-black text-white mb-2 leading-tight">
                 {currentProject.title}
+                <span className="text-[#E50914]">.</span>
               </h3>
-              <p className="text-xs text-zinc-400 line-clamp-3 mb-3 leading-relaxed">
+              <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mb-4">
                 {currentProject.description}
               </p>
-
-              {/* Tech Stack Pills */}
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {currentProject.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="bg-zinc-900 border border-zinc-800 text-zinc-300 text-[10.5px] px-2.5 py-1 rounded-xl font-medium"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              {/* Full-width Crimson Action Button */}
-              <a
-                href={currentProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-[#E50914] hover:bg-[#c00710] text-white font-bold py-3.5 px-5 rounded-2xl flex items-center justify-center gap-2 transition-transform active:scale-95 text-xs sm:text-sm shadow-lg shadow-red-950/40"
-              >
-                <span>Voir le projet</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
+
+            {/* Tech Stack Badges */}
+            <div className="flex flex-wrap gap-1.5">
+              {currentProject.tech.map((t) => (
+                <span
+                  key={t}
+                  className="bg-zinc-900 border border-zinc-800 text-zinc-300 text-[11px] px-3 py-1 rounded-xl font-medium"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* Full-width Crimson Action Button */}
+            <a
+              href={currentProject.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-[#E50914] hover:bg-[#c00710] text-white font-bold py-3.5 px-5 rounded-2xl flex items-center justify-center gap-2 transition-transform active:scale-95 text-xs sm:text-sm shadow-lg shadow-red-950/40 mt-1 cursor-pointer"
+            >
+              <span>Voir le projet</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </motion.div>
         </AnimatePresence>
 

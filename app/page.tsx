@@ -6,32 +6,38 @@ import FixedOverlay from "@/components/FixedOverlay";
 import HeroSection from "@/components/HeroSection";
 import { ProjectItem } from "@/components/Projects";
 
-// Dynamically import heavy below-the-fold sections for instant initial LCP
+// Dynamically import non-critical below-the-fold sections for instant mobile LCP
 const AboutSection = dynamic(() => import("@/components/AboutSection"), {
-  loading: () => <div className="min-h-[50vh] w-full" />,
+  ssr: false,
+  loading: () => <div className="min-h-[40vh] w-full" />,
 });
 const ProjectsSection = dynamic(() => import("@/components/ProjectsSection"), {
-  loading: () => <div className="min-h-[50vh] w-full" />,
+  ssr: false,
+  loading: () => <div className="min-h-[40vh] w-full" />,
 });
 const WorkExperienceSection = dynamic(
   () => import("@/components/WorkExperienceSection"),
   {
-    loading: () => <div className="min-h-[50vh] w-full" />,
+    ssr: false,
+    loading: () => <div className="min-h-[40vh] w-full" />,
   }
 );
 const TestimonialsSection = dynamic(
   () => import("@/components/TestimonialsSection"),
   {
-    loading: () => <div className="min-h-[50vh] w-full" />,
+    ssr: false,
+    loading: () => <div className="min-h-[40vh] w-full" />,
   }
 );
 const PartnersSection = dynamic(() => import("@/components/PartnersSection"), {
-  loading: () => <div className="min-h-[50vh] w-full" />,
+  ssr: false,
+  loading: () => <div className="min-h-[40vh] w-full" />,
 });
 const ContactSection = dynamic(() => import("@/components/ContactSection"), {
-  loading: () => <div className="min-h-[50vh] w-full" />,
+  ssr: false,
+  loading: () => <div className="min-h-[40vh] w-full" />,
 });
-const Footer = dynamic(() => import("@/components/Footer"));
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
 const Modals = dynamic(() => import("@/components/Modals"), { ssr: false });
 
 export default function Home() {

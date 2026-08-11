@@ -167,7 +167,7 @@ export default function ProjectsSection() {
               loop
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               className="absolute inset-0 h-full w-full object-cover z-0 opacity-60"
               src={currentProject.videoBg}
             >
@@ -199,7 +199,7 @@ export default function ProjectsSection() {
       </AnimatePresence>
 
       {/* =========================================================================
-          1. MOBILE VIEW: APP SHOWCASE CARD WITH VIDEO FRAME (BLOCK MD:HIDDEN)
+          1. MOBILE VIEW: APP SHOWCASE CARD WITH EMBEDDED FRAME (BLOCK MD:HIDDEN)
          ========================================================================= */}
       <div className="block md:hidden w-full max-w-md mx-auto z-10 relative">
         {/* Section Header with Navigation Arrows */}
@@ -249,7 +249,7 @@ export default function ProjectsSection() {
                   loop
                   muted
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   className="w-full h-full object-cover"
                   src={currentProject.videoBg}
                 >

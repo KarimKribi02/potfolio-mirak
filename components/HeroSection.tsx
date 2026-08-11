@@ -36,7 +36,7 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#E50914]/5 blur-[160px] rounded-full pointer-events-none z-0" />
 
       {/* =========================================================================
-          HERO PROFILE IMAGE LAYER (EXTRA-SLOW 2.8S CINEMATIC ENTRANCE ZOOM)
+          HERO PROFILE IMAGE LAYER (FAST OPTIMIZED RENDERING)
          ========================================================================= */}
       <motion.div
         style={{
@@ -46,15 +46,11 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
         }}
         className="absolute inset-0 z-0 h-full w-full pointer-events-none overflow-hidden"
       >
-        {/* Synchronized Extra-Slow Entrance Zoom (1.12 -> 1 over 2.8s) */}
+        {/* Fast Entrance & Instant Mobile Visibility */}
         <motion.div
-          initial={{ scale: 1.12 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{
-            duration: 2.8,
-            ease: transitionEase,
-          }}
+          initial={{ scale: 1.05, opacity: 0.8 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative w-full h-full"
         >
           <Image
@@ -62,7 +58,7 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
             alt="Mohamed Karim Kribi Portfolio Hero"
             fill
             priority
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 100vw"
             className="object-cover object-right-bottom md:object-right"
           />
         </motion.div>
@@ -71,23 +67,21 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
       </motion.div>
 
       {/* =========================================================================
-          HERO MAIN CONTENT SPLIT GRID (SYNCHRONIZED EXTRA-SLOW ENTRANCE)
+          HERO MAIN CONTENT SPLIT GRID (INSTANT VISIBILITY & CRISP TYPOGRAPHY)
          ========================================================================= */}
       <main className="relative z-10 max-w-6xl mx-auto w-full px-5 sm:px-8 md:px-12 flex-grow flex items-center pt-24 sm:pt-28 pb-8 pointer-events-auto">
         {/* Left Column Content */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 2.2, ease: transitionEase }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="w-full max-w-2xl flex flex-col items-start pl-0 md:pl-6 lg:pl-10"
         >
           {/* Subtitle Tag */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ delay: 0.3, duration: 1.6, ease: transitionEase }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
             className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#E50914] tracking-widest uppercase mb-2.5 sm:mb-3"
           >
             Développeur Full Stack &amp; Architecte Web
@@ -95,10 +89,9 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
 
           {/* Main Title Heading */}
           <motion.h1
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ delay: 0.55, duration: 1.7, ease: transitionEase }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] sm:leading-none mb-4 sm:mb-6"
           >
             Mohamed Karim<span className="text-[#E50914]">.</span>
@@ -106,10 +99,9 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
 
           {/* Paragraph Professional Bio Description */}
           <motion.p
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ delay: 0.8, duration: 1.8, ease: transitionEase }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
             className="text-xs sm:text-sm text-neutral-300 font-light max-w-lg leading-relaxed"
           >
             Développeur Full Stack passionné par l&apos;ingénierie logicielle et l&apos;architecture web moderne. Fort d&apos;une expérience concrète au sein de l&apos;agence C-Digital et dans la création de plateformes sur mesure (Next.js, NestJS, Laravel, Prisma &amp; SQL), je conçois des solutions digitales haute performance, évolutives et parfaitement optimisées pour l&apos;expérience utilisateur.

@@ -148,7 +148,7 @@ export default function ProjectsSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E50914]/5 blur-[180px] rounded-full pointer-events-none z-0" />
 
       {/* =========================================================================
-          DYNAMIC BACKGROUND MEDIA LAYER (VIDEO PREVIEW OR WATERMARK FALLBACK)
+          DYNAMIC BACKGROUND MEDIA LAYER (DESKTOP VIDEO / MOBILE LIGHTWEIGHT POSTER)
          ========================================================================= */}
       <AnimatePresence mode="wait">
         {currentProject.videoBg ? (
@@ -157,24 +157,34 @@ export default function ProjectsSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
             className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
           >
-            {/* Background Video Player */}
+            {/* Desktop-Only High-Performance Video Player */}
             <video
               key={currentProject.videoBg}
               autoPlay
               loop
               muted
               playsInline
-              className="absolute inset-0 h-full w-full object-cover z-0 opacity-70"
+              preload="metadata"
+              className="hidden md:block absolute inset-0 h-full w-full object-cover z-0 opacity-60"
               src={currentProject.videoBg}
             >
               <source src={currentProject.videoBg} type="video/mp4" />
             </video>
 
-            {/* Light, subtle dark overlay with extra darkness on mobile for text contrast */}
-            <div className="absolute inset-0 bg-black/75 md:bg-black/40 z-[1] pointer-events-none" />
+            {/* Mobile-Only Lightweight Backdrop (Zero Network Overhead) */}
+            <div className="block md:hidden absolute inset-0 bg-gradient-to-b from-neutral-950 via-[#0a0a0a] to-neutral-950 z-0">
+              <div className="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none">
+                <span className="text-8xl font-black text-white uppercase tracking-tighter">
+                  {currentProject.title.slice(0, 3)}
+                </span>
+              </div>
+            </div>
+
+            {/* Contrast Overlay */}
+            <div className="absolute inset-0 bg-black/60 md:bg-black/40 z-[1] pointer-events-none" />
           </motion.div>
         ) : (
           <motion.div
@@ -182,7 +192,7 @@ export default function ProjectsSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none flex flex-col items-center justify-center opacity-[0.07]"
           >
             {/* Large Central Emblem Circle / Badge */}

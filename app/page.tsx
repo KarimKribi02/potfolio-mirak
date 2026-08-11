@@ -70,10 +70,10 @@ export default function Home() {
       {revealSections.map((sec) => (
         <motion.div
           key={sec.id}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ amount: 0.15 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.05 }}
           className="md:snap-start md:snap-always w-full min-h-screen flex flex-col justify-center relative"
         >
           {sec.component}

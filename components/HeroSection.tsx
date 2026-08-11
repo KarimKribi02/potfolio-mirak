@@ -24,14 +24,11 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
   const imageScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
   const imageTranslateY = useTransform(scrollYProgress, [0, 0.8], [0, 50]);
 
-  // Ultra-smooth cinematic cubic-bezier easing curve tuple
-  const transitionEase = [0.16, 1, 0.3, 1] as const;
-
   return (
     <div
       ref={heroRef}
       id="home"
-      className="relative w-full min-h-[85vh] md:min-h-screen h-auto md:h-screen bg-[#080808] text-white flex flex-col justify-center items-center overflow-hidden font-sans selection:bg-[#E50914] selection:text-white px-5 sm:px-8 md:px-12"
+      className="relative w-full min-h-fit md:min-h-screen h-auto md:h-screen bg-[#080808] text-white flex flex-col justify-center items-center overflow-hidden font-sans selection:bg-[#E50914] selection:text-white px-5 sm:px-8 md:px-12 py-12 md:py-0"
     >
       {/* Background radial vignette & Ambient Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)] pointer-events-none z-0" />
@@ -68,14 +65,34 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
       </motion.div>
 
       {/* =========================================================================
-          HERO MAIN CONTENT (100% CENTERED ON MOBILE, LEFT-ALIGNED ON DESKTOP)
+          HERO MAIN CONTENT (STACKED: IMAGE FIRST ON MOBILE, LEFT-ALIGNED ON DESKTOP)
          ========================================================================= */}
-      <main className="relative z-10 max-w-6xl mx-auto w-full flex-grow flex items-center justify-center md:justify-start pt-16 sm:pt-20 md:pt-28 pb-8 pointer-events-auto my-auto">
+      <main className="relative z-10 max-w-6xl mx-auto w-full flex-grow flex flex-col md:flex-row items-center justify-center md:justify-start pt-16 sm:pt-20 md:pt-28 pb-6 pointer-events-auto my-auto">
+        
+        {/* =========================================================================
+            TOP PROFILE IMAGE ON MOBILE (ORDER-1 ON MOBILE, HIDDEN ON DESKTOP)
+           ========================================================================= */}
+        <div className="block md:hidden order-1 relative w-full max-w-[280px] sm:max-w-[320px] mx-auto overflow-hidden rounded-3xl border border-zinc-800/80 bg-zinc-950 shadow-2xl mb-6">
+          <Image
+            src="/images/mobile.png"
+            alt="Mohamed Karim Kribi"
+            width={320}
+            height={380}
+            priority
+            className="w-full h-auto object-cover object-top"
+          />
+          {/* Subtle bottom gradient to blend into dark background */}
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#080808] to-transparent pointer-events-none" />
+        </div>
+
+        {/* =========================================================================
+            TEXT CONTENT (ORDER-2 ON MOBILE, ORDER-1 ON DESKTOP)
+           ========================================================================= */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-full max-w-xl md:max-w-2xl flex flex-col items-center md:items-start text-center md:text-left pl-0 md:pl-6 lg:pl-10"
+          className="order-2 md:order-1 w-full max-w-xl md:max-w-2xl flex flex-col items-center md:items-start text-center md:text-left pl-0 md:pl-6 lg:pl-10"
         >
           {/* Subtitle Tag */}
           <motion.p
@@ -92,7 +109,7 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight mb-3 md:mb-5"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight mb-3 md:mb-5"
           >
             Mohamed Karim<span className="text-[#E50914]">.</span>
           </motion.h1>
@@ -146,11 +163,12 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
               </a>
             </div>
           </motion.div>
+
         </motion.div>
       </main>
 
       {/* Mobile Footer Copyright (visible on small mobile screens) */}
-      <div className="md:hidden text-center py-3 text-[10px] text-neutral-400 z-10">
+      <div className="md:hidden text-center py-2 text-[10px] text-neutral-400 z-10">
         @ Mohamed Karim Kribi. 2026
       </div>
     </div>

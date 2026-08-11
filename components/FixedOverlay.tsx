@@ -3,17 +3,17 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Menu, X, PhoneCall } from "lucide-react";
+import { Menu, X, PhoneCall, Home, User, FolderGit2, Briefcase, MessageSquare, Building2, Send, ChevronRight } from "lucide-react";
 import { LinkedinIcon, GithubIcon, InstagramIcon, FacebookIcon } from "./SocialIcons";
 
 const navItems = [
-  { name: "ACCUEIL", href: "#home", id: "home" },
-  { name: "À PROPOS", href: "#about", id: "about" },
-  { name: "PROJETS", href: "#projects", id: "projects" },
-  { name: "EXPÉRIENCE", href: "#work-experience", id: "work-experience" },
-  { name: "TÉMOIGNAGES", href: "#testimonials", id: "testimonials" },
-  { name: "PARTENAIRES", href: "#partners", id: "partners" },
-  { name: "CONTACT", href: "#contact", id: "contact" },
+  { name: "ACCUEIL", href: "#home", id: "home", icon: Home },
+  { name: "À PROPOS", href: "#about", id: "about", icon: User },
+  { name: "PROJETS", href: "#projects", id: "projects", icon: FolderGit2 },
+  { name: "EXPÉRIENCE", href: "#work-experience", id: "work-experience", icon: Briefcase },
+  { name: "TÉMOIGNAGES", href: "#testimonials", id: "testimonials", icon: MessageSquare },
+  { name: "PARTENAIRES", href: "#partners", id: "partners", icon: Building2 },
+  { name: "CONTACT", href: "#contact", id: "contact", icon: Send },
 ];
 
 const socialLinks = [
@@ -209,11 +209,28 @@ export default function FixedOverlay() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden fixed top-0 inset-x-0 z-[110] bg-[#080808]/98 backdrop-blur-2xl border-b border-neutral-800 pt-20 pb-8 px-6 flex flex-col gap-4 text-center pointer-events-auto shadow-2xl max-h-[90vh] overflow-y-auto"
+            className="lg:hidden fixed inset-0 z-[110] bg-[#080808]/98 backdrop-blur-2xl pt-20 pb-8 px-5 flex flex-col justify-between pointer-events-auto shadow-2xl overflow-y-auto"
           >
-            <div className="flex flex-col gap-2">
+            {/* Header top bar inside drawer */}
+            <div className="flex items-center justify-between pb-4 border-b border-neutral-800/80">
+              <div className="flex items-center gap-2">
+                <span className="text-xl font-black text-white tracking-tight">MK<span className="text-[#E50914]">.</span></span>
+                <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Navigation</span>
+              </div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white"
+                aria-label="Fermer"
+              >
+                <X className="w-5 h-5 text-[#E50914]" />
+              </button>
+            </div>
+
+            {/* Navigation Bento List */}
+            <div className="flex flex-col gap-2 my-auto py-4">
               {navItems.map((item) => {
                 const isActive = activeSection === item.id;
+                const IconComponent = item.icon;
                 return (
                   <a
                     key={item.id}
@@ -222,30 +239,36 @@ export default function FixedOverlay() {
                       handleClickNav(e, item.href, item.id);
                       setMobileMenuOpen(false);
                     }}
-                    className={`py-2.5 text-xs font-bold tracking-widest transition-colors rounded-lg ${
+                    className={`flex items-center justify-between px-4 py-3 rounded-xl border transition-all ${
                       isActive
-                        ? "text-[#E50914] bg-[#E50914]/10"
-                        : "text-neutral-300 hover:text-[#E50914] hover:bg-neutral-900/50"
+                        ? "bg-[#E50914]/15 border-[#E50914] text-white shadow-[0_0_20px_rgba(229,9,20,0.2)]"
+                        : "bg-neutral-900/60 border-neutral-800/80 text-neutral-300 hover:bg-neutral-900 hover:border-neutral-700 hover:text-white"
                     }`}
                   >
-                    {item.name}
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2 rounded-lg ${isActive ? "bg-[#E50914] text-white" : "bg-neutral-800 text-neutral-400"}`}>
+                        <IconComponent className="w-4 h-4" />
+                      </div>
+                      <span className="text-xs font-bold tracking-wider">{item.name}</span>
+                    </div>
+                    <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? "text-[#E50914] translate-x-0.5" : "text-neutral-500"}`} />
                   </a>
                 );
               })}
             </div>
 
-            {/* Mobile Contact & Socials */}
-            <div className="pt-4 border-t border-neutral-800 flex flex-col items-center gap-4">
+            {/* Mobile Footer Inside Drawer */}
+            <div className="pt-4 border-t border-neutral-800/80 flex flex-col items-center gap-4">
               <a
                 href="tel:+212702000215"
-                className="flex items-center gap-2 text-xs font-semibold text-neutral-200 hover:text-[#E50914] transition-colors"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-neutral-900/80 border border-neutral-800 text-xs font-semibold text-white hover:border-[#E50914] transition-colors"
               >
                 <PhoneCall className="w-4 h-4 text-[#E50914]" />
                 <span>+212 702 000 215</span>
               </a>
 
               {/* Mobile Drawer Social Links */}
-              <div className="flex items-center gap-4 text-neutral-400 pt-1">
+              <div className="flex items-center gap-3 text-neutral-400">
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
                   return (
@@ -254,7 +277,7 @@ export default function FixedOverlay() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-neutral-900 border border-neutral-800 hover:text-white hover:border-[#E50914] hover:bg-[#E50914] transition-all"
+                      className="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-white hover:border-[#E50914] hover:bg-[#E50914] transition-all shadow-md"
                       aria-label={social.name}
                     >
                       <Icon className="w-4 h-4" />

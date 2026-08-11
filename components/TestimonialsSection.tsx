@@ -171,9 +171,9 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="lg:col-span-7 flex flex-col justify-center items-start lg:pl-4"
         >
-          <div className="relative w-full rounded-2xl bg-neutral-950/70 border border-neutral-800/80 p-5 sm:p-8 md:p-10 backdrop-blur-md shadow-2xl">
+          <div className="relative w-full rounded-2xl bg-[#0d0d0d] md:bg-neutral-950/70 border border-zinc-800/80 p-5 sm:p-8 md:p-10 backdrop-blur-md shadow-2xl">
             
-            <Quote className="w-14 h-14 text-[#E50914]/15 absolute top-6 right-6 pointer-events-none" />
+            <Quote className="w-12 h-12 sm:w-14 sm:h-14 text-[#E50914]/15 absolute top-5 right-5 sm:top-6 sm:right-6 pointer-events-none" />
 
             <AnimatePresence custom={direction} mode="wait">
               <motion.div
@@ -187,29 +187,34 @@ export default function TestimonialsSection() {
                 className="w-full flex flex-col items-start"
               >
                 {/* 5-Star Rating */}
-                <div className="flex items-center gap-1.5 mb-6">
+                <div className="flex items-center gap-1.5 mb-5 sm:mb-6">
                   {[...Array(current.rating || 5)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-4 h-4 fill-[#E50914] text-[#E50914] drop-shadow-[0_0_8px_rgba(229,9,20,0.5)]"
+                      className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#E50914] text-[#E50914] drop-shadow-[0_0_8px_rgba(229,9,20,0.5)]"
                     />
                   ))}
                 </div>
 
                 {/* Quote Text */}
-                <p className="text-base sm:text-lg font-light text-neutral-200 leading-relaxed mb-8 italic">
+                <p className="text-sm sm:text-base md:text-lg font-light text-neutral-200 leading-relaxed mb-6 sm:mb-8 italic">
                   &ldquo;{current.quote}&rdquo;
                 </p>
 
-                {/* Author Name & Role */}
-                <div className="border-t border-neutral-800/80 pt-6 w-full flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight">
-                      {current.author}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#E50914] font-medium mt-0.5">
-                      {current.role}
-                    </p>
+                {/* Author Name, Role & Avatar */}
+                <div className="border-t border-neutral-800/80 pt-5 w-full flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#E50914] to-neutral-900 flex items-center justify-center font-bold text-white text-xs border border-zinc-700 shadow-md shrink-0">
+                      {current.author.slice(0, 2).toUpperCase()}
+                    </div>
+                    <div>
+                      <h3 className="text-sm sm:text-xl font-extrabold text-white tracking-tight">
+                        {current.author}
+                      </h3>
+                      <p className="text-[11px] sm:text-sm text-[#E50914] font-medium mt-0.5">
+                        {current.role}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </motion.div>

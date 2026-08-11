@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowUp, Mail, Phone, MapPin } from "lucide-react";
+import { ArrowUp, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { LinkedinIcon, GithubIcon, InstagramIcon, FacebookIcon } from "./SocialIcons";
 
 export default function Footer() {
@@ -46,9 +46,10 @@ export default function Footer() {
           </div>
           <a
             href="#contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 bg-[#E50914] hover:bg-[#ff2e4d] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(229,9,20,0.5)] whitespace-nowrap cursor-pointer shrink-0 text-center"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#E50914] hover:bg-[#ff2e4d] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(229,9,20,0.5)] rounded-xl whitespace-nowrap cursor-pointer shrink-0 text-center"
           >
-            CONTACTEZ-MOI
+            <span>ME CONTACTER</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 

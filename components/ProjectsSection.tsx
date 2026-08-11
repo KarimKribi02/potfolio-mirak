@@ -248,7 +248,7 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Animated Showcase Card (Zero Heavy Media Overhead) */}
+        {/* Animated Showcase Card with Framed Video Preview */}
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={`mobile-card-${currentProject.id}`}
@@ -258,44 +258,71 @@ export default function ProjectsSection() {
             animate="center"
             exit="exit"
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="bg-[#0d0d0d] border border-zinc-800/80 rounded-3xl p-5 shadow-2xl flex flex-col gap-4"
+            className="bg-[#0d0d0d] border border-zinc-800/80 rounded-3xl p-5 mb-6 shadow-2xl flex flex-col gap-4"
           >
-            {/* Category Tag & Title */}
+            {/* Embedded Video Cadre Frame with Poster Fallback (iOS WebKit Compatible) */}
+            <div className="relative w-full aspect-[16/9] sm:aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-800/80 bg-zinc-950 shadow-lg">
+              {currentProject.videoBg ? (
+                <video
+                  key={`video-mobile-${currentProject.id}`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  poster={currentProject.thumbnail}
+                  className="w-full h-full object-cover z-0"
+                  src={currentProject.videoBg}
+                >
+                  <source src={currentProject.videoBg} type="video/mp4" />
+                </video>
+              ) : (
+                <div className="w-full h-full bg-zinc-950 flex items-center justify-center">
+                  <span className="text-xl font-bold text-zinc-500 uppercase">
+                    {currentProject.title}
+                  </span>
+                </div>
+              )}
+              {/* Sleek Gradient Overlay for Crisp Contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            </div>
+
+            {/* Content Details below Video */}
             <div>
-              <span className="text-[11px] font-bold text-[#E50914] tracking-wider uppercase block mb-1.5">
+              <span className="text-xs font-bold text-[#E50914] tracking-wider uppercase block mb-1.5">
                 {currentProject.category}
               </span>
-              <h3 className="text-2xl font-black text-white mb-2 leading-tight">
+              <h3 className="text-2xl font-bold text-white mb-1.5 leading-tight">
                 {currentProject.title}
                 <span className="text-[#E50914]">.</span>
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mb-4">
+              <p className="text-sm text-zinc-400 line-clamp-3 mb-3.5 leading-relaxed">
                 {currentProject.description}
               </p>
-            </div>
 
-            {/* Tech Stack Badges */}
-            <div className="flex flex-wrap gap-1.5">
-              {currentProject.tech.map((t) => (
-                <span
-                  key={t}
-                  className="bg-zinc-900 border border-zinc-800 text-zinc-300 text-[11px] px-3 py-1 rounded-xl font-medium"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+              {/* Tech Stack Pills */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {currentProject.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs px-3 py-1.5 rounded-xl font-medium"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
 
-            {/* Full-width Crimson Action Button */}
-            <a
-              href={currentProject.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full bg-[#E50914] hover:bg-[#c00710] text-white font-bold py-3.5 px-5 rounded-2xl flex items-center justify-center gap-2 transition-transform active:scale-95 text-xs sm:text-sm shadow-lg shadow-red-950/40 mt-1 cursor-pointer"
-            >
-              <span>Voir le projet</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
+              {/* Full-width Crimson Red CTA Button */}
+              <a
+                href={currentProject.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-[#E50914] hover:bg-[#c00710] text-white font-bold py-3.5 px-5 rounded-2xl flex items-center justify-center gap-2 transition-transform active:scale-95 text-sm shadow-lg shadow-red-950/40 cursor-pointer"
+              >
+                <span>Voir le projet</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </motion.div>
         </AnimatePresence>
 

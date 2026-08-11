@@ -26,13 +26,6 @@
   }
 }
 
-/* Global 80% Density Scaling for Desktop Viewports (min-width: 1024px) */
-@media (min-width: 1024px) {
-  html {
-    zoom: 0.8 !important;
-  }
-}
-
 /* Custom Utilities */
 .bg-pitch-dark {
   background-color: #0d0d0d;

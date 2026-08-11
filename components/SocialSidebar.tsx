@@ -2,13 +2,34 @@
 
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
-import { LinkedinIcon, GithubIcon, InstagramIcon } from "./SocialIcons";
+import { LinkedinIcon, GithubIcon, InstagramIcon, FacebookIcon } from "./SocialIcons";
 
 const socialLinks = [
-  { name: "LinkedIn", icon: LinkedinIcon, href: "https://linkedin.com" },
-  { name: "GitHub", icon: GithubIcon, href: "https://github.com" },
-  { name: "Instagram", icon: InstagramIcon, href: "https://instagram.com" },
-  { name: "Email", icon: Mail, href: "mailto:contact@redakhatib.dev" },
+  {
+    name: "LinkedIn",
+    icon: LinkedinIcon,
+    href: "https://www.linkedin.com/in/mohamed-karim-kribi-31b30b248/",
+  },
+  {
+    name: "GitHub",
+    icon: GithubIcon,
+    href: "https://github.com/KarimKribi02",
+  },
+  {
+    name: "Instagram",
+    icon: InstagramIcon,
+    href: "https://www.instagram.com/krm_02/",
+  },
+  {
+    name: "Facebook",
+    icon: FacebookIcon,
+    href: "https://www.facebook.com/karim.kech.94617",
+  },
+  {
+    name: "Email",
+    icon: Mail,
+    href: "mailto:kribimohamedkarim@gmail.com",
+  },
 ];
 
 export default function SocialSidebar() {

@@ -29,7 +29,7 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
     <div
       ref={heroRef}
       id="home"
-      className="relative w-full min-h-screen bg-[#080808] text-white flex flex-col justify-between overflow-hidden font-sans selection:bg-[#E50914] selection:text-white"
+      className="relative w-full h-screen bg-[#080808] text-white flex flex-col justify-between overflow-hidden font-sans selection:bg-[#E50914] selection:text-white"
     >
       {/* Background radial vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)] pointer-events-none z-0" />
@@ -67,20 +67,20 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
           />
         </motion.div>
         {/* Gradient Overlay for Text Legibility */}
-        <div className="absolute inset-0 z-1 bg-gradient-to-r from-[#080808] via-[#080808]/75 to-transparent w-full md:w-3/5 pointer-events-none" />
+        <div className="absolute inset-0 z-1 bg-gradient-to-t md:bg-gradient-to-r from-[#080808] via-[#080808]/85 md:via-[#080808]/75 to-[#080808]/40 md:to-transparent w-full md:w-3/5 pointer-events-none" />
       </motion.div>
 
       {/* =========================================================================
           HERO MAIN CONTENT SPLIT GRID (SYNCHRONIZED EXTRA-SLOW ENTRANCE)
          ========================================================================= */}
-      <main className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-12 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-32 pb-12 pointer-events-auto">
+      <main className="relative z-10 max-w-6xl mx-auto w-full px-5 sm:px-8 md:px-12 flex-grow flex items-center pt-24 sm:pt-28 pb-8 pointer-events-auto">
         {/* Left Column Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 2.2, ease: transitionEase }}
-          className="lg:col-span-7 xl:col-span-6 flex flex-col items-start pt-6 lg:pt-0 pl-0 md:pl-12 lg:pl-16"
+          className="w-full max-w-2xl flex flex-col items-start pl-0 md:pl-6 lg:pl-10"
         >
           {/* Subtitle Tag */}
           <motion.p
@@ -88,7 +88,7 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ delay: 0.3, duration: 1.6, ease: transitionEase }}
-            className="text-xs sm:text-sm font-semibold text-[#E50914] tracking-widest uppercase mb-3"
+            className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#E50914] tracking-widest uppercase mb-2.5 sm:mb-3"
           >
             Développeur Full Stack &amp; Architecte Web
           </motion.p>
@@ -99,7 +99,7 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ delay: 0.55, duration: 1.7, ease: transitionEase }}
-            className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-none mb-6 whitespace-nowrap"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] sm:leading-none mb-4 sm:mb-6"
           >
             Mohamed Karim<span className="text-[#E50914]">.</span>
           </motion.h1>
@@ -110,7 +110,7 @@ export default function HeroSection({ onOpenVideoModal }: HeroSectionProps = {})
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ delay: 0.8, duration: 1.8, ease: transitionEase }}
-            className="text-xs sm:text-sm text-neutral-300 font-light max-w-xl leading-relaxed"
+            className="text-xs sm:text-sm text-neutral-300 font-light max-w-lg leading-relaxed"
           >
             Développeur Full Stack passionné par l&apos;ingénierie logicielle et l&apos;architecture web moderne. Fort d&apos;une expérience concrète au sein de l&apos;agence C-Digital et dans la création de plateformes sur mesure (Next.js, NestJS, Laravel, Prisma &amp; SQL), je conçois des solutions digitales haute performance, évolutives et parfaitement optimisées pour l&apos;expérience utilisateur.
           </motion.p>

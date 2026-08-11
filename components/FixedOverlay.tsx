@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Menu, X, PhoneCall } from "lucide-react";
-import { LinkedinIcon, FacebookIcon, InstagramIcon } from "./SocialIcons";
+import { LinkedinIcon, GithubIcon, InstagramIcon, FacebookIcon } from "./SocialIcons";
 
 const navItems = [
   { name: "ACCUEIL", href: "#home", id: "home" },
@@ -17,9 +17,26 @@ const navItems = [
 ];
 
 const socialLinks = [
-  { name: "LinkedIn", icon: LinkedinIcon, href: "https://linkedin.com" },
-  { name: "Facebook", icon: FacebookIcon, href: "https://facebook.com" },
-  { name: "Instagram", icon: InstagramIcon, href: "https://instagram.com" },
+  {
+    name: "LinkedIn",
+    icon: LinkedinIcon,
+    href: "https://www.linkedin.com/in/mohamed-karim-kribi-31b30b248/",
+  },
+  {
+    name: "GitHub",
+    icon: GithubIcon,
+    href: "https://github.com/KarimKribi02",
+  },
+  {
+    name: "Instagram",
+    icon: InstagramIcon,
+    href: "https://www.instagram.com/krm_02/",
+  },
+  {
+    name: "Facebook",
+    icon: FacebookIcon,
+    href: "https://www.facebook.com/karim.kech.94617",
+  },
 ];
 
 export default function FixedOverlay() {
@@ -117,8 +134,8 @@ export default function FixedOverlay() {
           1. 100% PURE TRANSPARENT FIXED NAVBAR (NO BG COLOR & NO BORDER LINE)
          ========================================================================= */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full px-6 sm:px-12 transition-all duration-300 pointer-events-auto bg-transparent ${
-          scrolled ? "py-4" : "py-5"
+        className={`fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-8 md:px-12 transition-all duration-300 pointer-events-auto bg-[#080808]/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b border-neutral-900/60 md:border-transparent ${
+          scrolled ? "py-3 md:py-4" : "py-3.5 md:py-5"
         } flex items-center justify-between`}
       >
         {/* Group Logo + Navigation Links */}
@@ -132,10 +149,10 @@ export default function FixedOverlay() {
             <Image
               src="/images/logo1.png"
               alt="Mohamed Karim Logo"
-              width={220}
-              height={70}
+              width={180}
+              height={55}
               priority
-              className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-8 sm:h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </a>
 
@@ -177,10 +194,10 @@ export default function FixedOverlay() {
         {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 text-neutral-300 hover:text-white"
+          className="lg:hidden p-2 text-neutral-200 hover:text-white rounded-lg bg-neutral-900/60 border border-neutral-800/80 focus:outline-none cursor-pointer"
           aria-label="Toggle Mobile Menu"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="w-5 h-5 text-[#E50914]" /> : <Menu className="w-5 h-5" />}
         </button>
       </header>
 
@@ -191,28 +208,60 @@ export default function FixedOverlay() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden fixed top-20 left-0 right-0 z-[110] bg-[#080808]/95 backdrop-blur-xl border-b border-neutral-800 p-6 flex flex-col gap-4 text-center text-xs font-bold tracking-widest pointer-events-auto"
+            transition={{ duration: 0.25 }}
+            className="lg:hidden fixed top-0 inset-x-0 z-[110] bg-[#080808]/98 backdrop-blur-2xl border-b border-neutral-800 pt-20 pb-8 px-6 flex flex-col gap-4 text-center pointer-events-auto shadow-2xl max-h-[90vh] overflow-y-auto"
           >
-            {navItems.map((item) => (
+            <div className="flex flex-col gap-2">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    onClick={(e) => {
+                      handleClickNav(e, item.href, item.id);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`py-2.5 text-xs font-bold tracking-widest transition-colors rounded-lg ${
+                      isActive
+                        ? "text-[#E50914] bg-[#E50914]/10"
+                        : "text-neutral-300 hover:text-[#E50914] hover:bg-neutral-900/50"
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* Mobile Contact & Socials */}
+            <div className="pt-4 border-t border-neutral-800 flex flex-col items-center gap-4">
               <a
-                key={item.id}
-                href={item.href}
-                onClick={(e) => {
-                  handleClickNav(e, item.href, item.id);
-                  setMobileMenuOpen(false);
-                }}
-                className={`py-2 transition-colors ${
-                  activeSection === item.id
-                    ? "text-[#E50914]"
-                    : "text-neutral-400 hover:text-[#E50914]"
-                }`}
+                href="tel:+212702000215"
+                className="flex items-center gap-2 text-xs font-semibold text-neutral-200 hover:text-[#E50914] transition-colors"
               >
-                {item.name}
+                <PhoneCall className="w-4 h-4 text-[#E50914]" />
+                <span>+212 702 000 215</span>
               </a>
-            ))}
-            <div className="pt-4 border-t border-neutral-800 text-neutral-300 flex items-center justify-center gap-2">
-              <PhoneCall className="w-3.5 h-3.5 text-[#E50914]" />
-              <a href="tel:+212702000215">+212 702 000 215</a>
+
+              {/* Mobile Drawer Social Links */}
+              <div className="flex items-center gap-4 text-neutral-400 pt-1">
+                {socialLinks.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-neutral-900 border border-neutral-800 hover:text-white hover:border-[#E50914] hover:bg-[#E50914] transition-all"
+                      aria-label={social.name}
+                    >
+                      <Icon className="w-4 h-4" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         )}
@@ -237,7 +286,7 @@ export default function FixedOverlay() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1 hover:text-white hover:scale-110 transition-all duration-300"
+                className="p-1 text-neutral-400 hover:text-[#E50914] hover:scale-110 transition-all duration-300"
                 aria-label={social.name}
               >
                 <Icon className="w-4 h-4" />

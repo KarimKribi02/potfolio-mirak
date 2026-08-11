@@ -54,7 +54,7 @@ export default function PartnersSection() {
   return (
     <section
       id="partners"
-      className="relative w-full min-h-screen bg-[#080808] text-white pt-32 pb-20 sm:pt-36 sm:pb-24 px-6 sm:px-12 flex flex-col justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
+      className="relative w-full min-h-screen bg-[#080808] text-white pt-24 pb-16 sm:pt-28 sm:pb-20 px-4 sm:px-8 md:px-12 flex flex-col justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
     >
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[550px] h-[550px] bg-[#E50914]/5 blur-[180px] rounded-full pointer-events-none z-0" />
@@ -62,13 +62,13 @@ export default function PartnersSection() {
       <div className="max-w-6xl mx-auto w-full relative z-10">
         
         {/* Section Heading & Subtitle */}
-        <div className="mb-14 sm:mb-20">
+        <div className="mb-10 sm:mb-16 md:mb-20">
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight"
+            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight"
           >
             Partenaires <span className="text-[#E50914]">&amp; Clients</span>
           </motion.h2>
@@ -77,17 +77,17 @@ export default function PartnersSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xs sm:text-sm text-neutral-400 font-light mt-3 max-w-xl leading-relaxed"
+            className="text-xs sm:text-sm text-neutral-400 font-light mt-2 sm:mt-3 max-w-xl leading-relaxed"
           >
             Entreprises et plateformes qui nous font confiance pour leurs solutions digitales.
           </motion.p>
         </div>
 
         {/* 6-Logo Large Grid (3 cols on desktop, 2 cols on mobile) */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10 items-center justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 sm:gap-6 md:gap-10 items-center justify-items-center">
           {partnersData.map((partner, index) => {
             const CardContent = (
-              <div className="w-full h-full flex items-center justify-center p-5 relative">
+              <div className="w-full h-full flex items-center justify-center p-3.5 sm:p-5 relative">
                 <Image
                   src={partner.logoUrl}
                   alt={partner.name}
@@ -105,7 +105,7 @@ export default function PartnersSection() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="w-full max-w-[320px] h-32 sm:h-40 rounded-2xl bg-neutral-900/80 border border-neutral-800/90 backdrop-blur-md flex items-center justify-center relative overflow-hidden transition-all duration-300 hover:border-[#E50914]/60 hover:bg-neutral-800 hover:shadow-[0_0_35px_rgba(229,9,20,0.25)] hover:scale-105 group shadow-xl cursor-pointer"
+                className="w-full max-w-[320px] h-28 sm:h-36 md:h-40 rounded-xl sm:rounded-2xl bg-neutral-900/80 border border-neutral-800/90 backdrop-blur-md flex items-center justify-center relative overflow-hidden transition-all duration-300 hover:border-[#E50914]/60 hover:bg-neutral-800 hover:shadow-[0_0_35px_rgba(229,9,20,0.25)] hover:scale-105 group shadow-xl cursor-pointer"
               >
                 {partner.websiteUrl ? (
                   <a

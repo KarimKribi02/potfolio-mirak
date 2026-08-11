@@ -56,13 +56,13 @@ export default function Home() {
   return (
     <main
       id="main-container"
-      className="relative h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#080808] text-white selection:bg-[#E50914] selection:text-white overflow-x-hidden"
+      className="relative h-screen overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-[#080808] text-white selection:bg-[#E50914] selection:text-white overflow-x-hidden"
     >
       {/* 1. Fixed UI Overlay Frame (Navbar, Social Sidebar, Scroll Line, Copyright) */}
       <FixedOverlay />
 
       {/* 2. Hero Section (Snap Section 1) */}
-      <div className="snap-start snap-always w-full min-h-screen relative">
+      <div className="md:snap-start md:snap-always w-full min-h-screen relative">
         <HeroSection onOpenVideoModal={() => setVideoModalOpen(true)} />
       </div>
 
@@ -70,11 +70,11 @@ export default function Home() {
       {revealSections.map((sec) => (
         <motion.div
           key={sec.id}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ amount: 0.3 }}
-          className="snap-start snap-always w-full min-h-screen flex flex-col justify-center relative"
+          viewport={{ amount: 0.15 }}
+          className="md:snap-start md:snap-always w-full min-h-screen flex flex-col justify-center relative"
         >
           {sec.component}
         </motion.div>

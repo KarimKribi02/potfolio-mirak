@@ -67,7 +67,7 @@ export default function WorkExperienceSection({ onOpenResumeModal }: WorkExperie
   return (
     <section
       id="work-experience"
-      className="relative w-full min-h-screen bg-[#080808] text-white pt-32 pb-20 sm:pt-36 sm:pb-24 px-6 sm:px-12 flex flex-col justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
+      className="relative w-full min-h-screen bg-[#080808] text-white pt-24 pb-16 sm:pt-28 sm:pb-20 px-4 sm:px-8 md:px-12 flex flex-col justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
     >
       {/* Subtle radial background glow */}
       <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-[#E50914]/5 blur-[170px] rounded-full pointer-events-none" />
@@ -82,9 +82,9 @@ export default function WorkExperienceSection({ onOpenResumeModal }: WorkExperie
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-16 sm:mb-20"
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 mb-10 sm:mb-16 md:mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Expérience Professionnelle
           </h2>
 
@@ -93,7 +93,7 @@ export default function WorkExperienceSection({ onOpenResumeModal }: WorkExperie
             target="_blank"
             rel="noopener noreferrer"
             download="MOHAMEDKARIM_KRIBI_CV.pdf"
-            className="flex items-center gap-2.5 px-7 py-3 bg-[#E50914] hover:bg-[#ff2e4d] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(229,9,20,0.5)] cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 bg-[#E50914] hover:bg-[#ff2e4d] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(229,9,20,0.5)] cursor-pointer text-center"
           >
             <span>TÉLÉCHARGER CV</span>
           </a>
@@ -110,11 +110,11 @@ export default function WorkExperienceSection({ onOpenResumeModal }: WorkExperie
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="py-10 border-b border-neutral-800/60 last:border-b-0 grid grid-cols-1 md:grid-cols-12 gap-6 items-center group hover:bg-neutral-950/40 px-4 -mx-4 rounded-xl transition-colors duration-300"
+              className="py-6 sm:py-8 md:py-10 border-b border-neutral-800/60 last:border-b-0 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-start md:items-center group hover:bg-neutral-950/40 px-3 sm:px-4 -mx-3 sm:-mx-4 rounded-xl transition-colors duration-300"
             >
               {/* Col 1: Logo Badge (3 cols) */}
               <div className="md:col-span-3 flex items-center">
-                <div className="w-44 sm:w-48 h-20 sm:h-22 rounded-2xl bg-neutral-900/90 border border-neutral-700/80 backdrop-blur-sm flex items-center justify-center p-3 relative overflow-hidden transition-all duration-300 group-hover:border-[#E50914] group-hover:bg-neutral-800/80 group-hover:shadow-[0_0_30px_rgba(229,9,20,0.25)] shadow-lg">
+                <div className="w-36 sm:w-44 md:w-48 h-16 sm:h-20 md:h-22 rounded-2xl bg-neutral-900/90 border border-neutral-700/80 backdrop-blur-sm flex items-center justify-center p-2.5 sm:p-3 relative overflow-hidden transition-all duration-300 group-hover:border-[#E50914] group-hover:bg-neutral-800/80 group-hover:shadow-[0_0_30px_rgba(229,9,20,0.25)] shadow-lg">
                   {exp.logoUrl ? (
                     <div className="relative w-full h-full flex items-center justify-center">
                       <Image

@@ -142,7 +142,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative w-full min-h-screen bg-[#080808] text-white pt-32 pb-20 sm:pt-36 sm:pb-24 px-6 sm:px-12 flex flex-col justify-between items-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
+      className="relative w-full min-h-screen bg-[#080808] text-white pt-24 pb-16 sm:pt-28 sm:pb-20 px-6 sm:px-12 flex flex-col justify-between items-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
     >
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E50914]/5 blur-[180px] rounded-full pointer-events-none z-0" />
@@ -173,8 +173,8 @@ export default function ProjectsSection() {
               <source src={currentProject.videoBg} type="video/mp4" />
             </video>
 
-            {/* Light, subtle dark overlay so the video is clearly visible */}
-            <div className="absolute inset-0 bg-black/40 z-[1] pointer-events-none" />
+            {/* Light, subtle dark overlay with extra darkness on mobile for text contrast */}
+            <div className="absolute inset-0 bg-black/75 md:bg-black/40 z-[1] pointer-events-none" />
           </motion.div>
         ) : (
           <motion.div
@@ -186,15 +186,15 @@ export default function ProjectsSection() {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none flex flex-col items-center justify-center opacity-[0.07]"
           >
             {/* Large Central Emblem Circle / Badge */}
-            <div className="w-80 h-80 sm:w-96 sm:h-96 md:w-[480px] md:h-[480px] rounded-full border-[12px] border-white flex items-center justify-center relative">
+            <div className="w-64 h-64 sm:w-96 sm:h-96 md:w-[480px] md:h-[480px] rounded-full border-[8px] sm:border-[12px] border-white flex items-center justify-center relative">
               {/* Inner Monogram Mark */}
-              <span className="text-9xl sm:text-[160px] font-black text-white tracking-tighter">
+              <span className="text-7xl sm:text-[160px] font-black text-white tracking-tighter">
                 {currentProject.title.slice(0, 2)}
               </span>
             </div>
 
             {/* Large Watermark Text */}
-            <span className="text-7xl sm:text-9xl font-black tracking-widest text-white mt-4 uppercase">
+            <span className="text-5xl sm:text-9xl font-black tracking-widest text-white mt-4 uppercase">
               {currentProject.watermarkText || currentProject.title}
             </span>
           </motion.div>
@@ -202,7 +202,7 @@ export default function ProjectsSection() {
       </AnimatePresence>
 
       {/* Spacer Top */}
-      <div className="w-full h-8" />
+      <div className="w-full h-4 sm:h-8" />
 
       {/* =========================================================================
           MAIN CAROUSEL CONTAINER (CENTER ALIGNED)
@@ -212,19 +212,19 @@ export default function ProjectsSection() {
         {/* Left Navigation Arrow */}
         <button
           onClick={prevSlide}
-          className="absolute left-0 sm:-left-12 lg:-left-20 top-1/2 -translate-y-1/2 z-20 p-3 text-neutral-300 hover:text-white hover:scale-125 transition-all duration-300 focus:outline-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] cursor-pointer"
-          aria-label="Previous Project"
+          className="absolute left-0 sm:-left-8 md:-left-12 lg:-left-20 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white hover:bg-[#E50914] hover:border-[#E50914] hover:scale-110 hover:shadow-[0_0_20px_rgba(229,9,20,0.6)] transition-all duration-300 focus:outline-none cursor-pointer shadow-2xl"
+          aria-label="Projet précédent"
         >
-          <ChevronLeft className="w-8 h-8 sm:w-10 sm:h-10 stroke-[1.5]" />
+          <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 stroke-[2.5]" />
         </button>
 
         {/* Right Navigation Arrow */}
         <button
           onClick={nextSlide}
-          className="absolute right-0 sm:-right-12 lg:-right-20 top-1/2 -translate-y-1/2 z-20 p-3 text-neutral-300 hover:text-white hover:scale-125 transition-all duration-300 focus:outline-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] cursor-pointer"
-          aria-label="Next Project"
+          className="absolute right-0 sm:-right-8 md:-right-12 lg:-right-20 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white hover:bg-[#E50914] hover:border-[#E50914] hover:scale-110 hover:shadow-[0_0_20px_rgba(229,9,20,0.6)] transition-all duration-300 focus:outline-none cursor-pointer shadow-2xl"
+          aria-label="Projet suivant"
         >
-          <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10 stroke-[1.5]" />
+          <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 stroke-[2.5]" />
         </button>
 
         {/* Animated Slide Content */}
@@ -241,29 +241,29 @@ export default function ProjectsSection() {
           >
             {/* Category Tag */}
             {currentProject.category && (
-              <span className="text-xs font-semibold text-[#E50914] tracking-widest uppercase mb-2 drop-shadow-md">
+              <span className="text-[11px] sm:text-xs font-semibold text-[#E50914] tracking-widest uppercase mb-1.5 sm:mb-2 drop-shadow-md">
                 {currentProject.category}
               </span>
             )}
 
             {/* Project Title with Red Dot */}
-            <h2 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white uppercase leading-none mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase leading-tight md:leading-none mb-3 sm:mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
               {currentProject.title}
               <span className="text-[#E50914] inline-block ml-1">.</span>
             </h2>
 
             {/* Description */}
-            <p className="text-xs sm:text-sm text-neutral-200 font-normal max-w-xl leading-relaxed mb-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+            <p className="text-xs sm:text-sm text-neutral-200 font-normal max-w-xl leading-relaxed mb-4 sm:mb-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
               {currentProject.description}
             </p>
 
             {/* Tech Badges */}
             {currentProject.tech && (
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
                 {currentProject.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-3 py-1 bg-neutral-950/80 backdrop-blur-md border border-neutral-700/80 text-[10.5px] text-neutral-200 font-mono shadow-md"
+                    className="px-2.5 py-0.5 sm:px-3 sm:py-1 bg-neutral-950/80 backdrop-blur-md border border-neutral-700/80 text-[10px] sm:text-[10.5px] text-neutral-200 font-mono shadow-md"
                   >
                     {t}
                   </span>
@@ -276,7 +276,7 @@ export default function ProjectsSection() {
               href={currentProject.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#E50914] text-white font-bold px-8 py-3.5 rounded-none uppercase tracking-wider text-sm transition-transform duration-300 hover:scale-105 hover:bg-[#c00710] shadow-[0_0_25px_rgba(229,9,20,0.6)] cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center bg-[#E50914] text-white font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-none uppercase tracking-wider text-xs sm:text-sm transition-transform duration-300 hover:scale-105 hover:bg-[#c00710] shadow-[0_0_25px_rgba(229,9,20,0.6)] cursor-pointer"
             >
               VOIR LE PROJET
             </a>

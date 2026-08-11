@@ -123,7 +123,7 @@ export default function TestimonialsSection() {
       <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[500px] h-[500px] bg-[#E50914]/5 blur-[180px] rounded-full pointer-events-none" />
 
       {/* Main Content Grid Container */}
-      <div className="max-w-6xl mx-auto w-full px-6 sm:px-12 pt-32 pb-20 sm:pt-36 sm:pb-24 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div className="max-w-6xl mx-auto w-full px-4 sm:px-8 md:px-12 pt-24 pb-16 sm:pt-28 sm:pb-20 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
         
         {/* =========================================================================
             LEFT COLUMN: Oversized Crimson Quotes & Title
@@ -136,26 +136,26 @@ export default function TestimonialsSection() {
           className="lg:col-span-5 flex flex-col items-start"
         >
           {/* Oversized Crimson Red Quote Icon Marks */}
-          <div className="flex gap-2.5 mb-8">
-            <div className="w-6 h-12 bg-[#E50914] rounded-t-sm shadow-[0_0_15px_#E50914]" />
-            <div className="w-6 h-12 bg-[#E50914] rounded-t-sm shadow-[0_0_15px_#E50914]" />
+          <div className="flex gap-2 mb-4 sm:mb-8">
+            <div className="w-4 h-8 sm:w-6 sm:h-12 bg-[#E50914] rounded-t-sm shadow-[0_0_15px_#E50914]" />
+            <div className="w-4 h-8 sm:w-6 sm:h-12 bg-[#E50914] rounded-t-sm shadow-[0_0_15px_#E50914]" />
           </div>
 
           {/* Main Section Heading */}
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-4">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-3 sm:mb-4">
             Avis &amp; Témoignages
             <br />
             <span className="text-[#E50914]">Clients</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="text-xs sm:text-sm text-neutral-400 font-light max-w-md leading-relaxed mb-8">
+          <p className="text-xs sm:text-sm text-neutral-400 font-light max-w-md leading-relaxed mb-4 sm:mb-8">
             Ce que disent mes clients et partenaires au sujet de nos collaborations.
           </p>
 
           {/* Slide Progress Counter */}
           <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
-            <span className="text-white font-bold text-base">0{currentIndex + 1}</span>
+            <span className="text-white font-bold text-sm sm:text-base">0{currentIndex + 1}</span>
             <span>/</span>
             <span>0{testimonialsData.length}</span>
           </div>
@@ -171,7 +171,7 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="lg:col-span-7 flex flex-col justify-center items-start lg:pl-4"
         >
-          <div className="relative w-full rounded-2xl bg-neutral-950/70 border border-neutral-800/80 p-8 sm:p-10 backdrop-blur-md shadow-2xl">
+          <div className="relative w-full rounded-2xl bg-neutral-950/70 border border-neutral-800/80 p-5 sm:p-8 md:p-10 backdrop-blur-md shadow-2xl">
             
             <Quote className="w-14 h-14 text-[#E50914]/15 absolute top-6 right-6 pointer-events-none" />
 

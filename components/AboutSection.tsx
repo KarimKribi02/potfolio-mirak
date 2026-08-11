@@ -44,7 +44,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full min-h-screen bg-[#080808] text-white pt-24 pb-16 sm:pt-28 sm:pb-20 px-4 sm:px-8 md:px-12 flex items-center justify-center font-sans overflow-hidden border-t border-neutral-900/60"
+      className="relative w-full min-h-fit md:min-h-screen bg-[#080808] text-white py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-12 flex items-center justify-center font-sans overflow-hidden border-t border-neutral-900/60"
     >
       {/* Subtle radial glow */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[450px] h-[450px] bg-[#E50914]/5 blur-[160px] rounded-full pointer-events-none" />

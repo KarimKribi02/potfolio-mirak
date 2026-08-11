@@ -54,7 +54,7 @@ export default function PartnersSection() {
   return (
     <section
       id="partners"
-      className="relative w-full min-h-screen bg-[#080808] text-white pt-24 pb-16 sm:pt-28 sm:pb-20 px-4 sm:px-8 md:px-12 flex flex-col justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
+      className="relative w-full min-h-fit md:min-h-screen bg-[#080808] text-white py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-12 flex flex-col justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
     >
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[550px] h-[550px] bg-[#E50914]/5 blur-[180px] rounded-full pointer-events-none z-0" />

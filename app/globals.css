@@ -89,10 +89,11 @@
   background: #e50914;
 }
 
-/* Mobile Immediate Visibility Safety Net (Prevents Opacity-0 Stuck Animations) */
+/* Mobile Immediate Visibility Safety Net (Prevents Opacity-0 Stuck Animations & Blank Spaces) */
 @media (max-width: 768px) {
   section,
   main,
+  div,
   [id="about"],
   [id="projects"],
   [id="work-experience"],

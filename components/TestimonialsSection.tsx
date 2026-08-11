@@ -110,7 +110,7 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative w-full min-h-screen bg-[#080808] text-white flex items-center justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
+      className="relative w-full min-h-fit md:min-h-screen bg-[#080808] text-white py-16 sm:py-20 md:py-24 flex items-center justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
     >
       {/* Background Image with Dark Vignette Overlay */}
       <div

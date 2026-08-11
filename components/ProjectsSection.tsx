@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 export interface Project {
@@ -11,6 +12,7 @@ export interface Project {
   description: string;
   tech: string[];
   link: string;
+  thumbnail: string;
   watermarkText?: string;
   videoBg?: string;
 }
@@ -24,6 +26,7 @@ export const projectsData: Project[] = [
       "Plateforme touristique premium dédiée à la découverte du Maroc, proposant des expériences authentiques, des excursions, des transferts privés et des services de conciergerie.",
     tech: ["Laravel", "Next.js", "MySQL", "Tailwind CSS"],
     link: "https://morocco-loco.com/",
+    thumbnail: "/images/project-saas.png",
     videoBg:
       "https://res.cloudinary.com/digfptrqs/video/upload/v1786445955/morocco-loco_jbjlkc.mp4",
   },
@@ -35,6 +38,7 @@ export const projectsData: Project[] = [
       "Plateforme digitale sur mesure dédiée à la location de matériel de chantier au Maroc.",
     tech: ["Next.js", "NestJS", "MySQL", "TypeORM", "Tailwind CSS"],
     link: "https://aandilik.com/",
+    thumbnail: "/images/project-mobile.png",
     videoBg:
       "https://res.cloudinary.com/digfptrqs/video/upload/v1786445095/aandilik_2_guialx.mp4",
   },
@@ -46,6 +50,7 @@ export const projectsData: Project[] = [
       "Site web moderne et premium pour une agence digitale, conçu pour présenter ses services, ses projets et son expertise à travers une expérience immersive.",
     tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
     link: "https://cdigital.ma/",
+    thumbnail: "/images/project-ecommerce.png",
     videoBg:
       "https://res.cloudinary.com/digfptrqs/video/upload/v1786447100/cdigitalvidio_ij9cro.mp4",
   },
@@ -57,6 +62,7 @@ export const projectsData: Project[] = [
       "Site web professionnel dédié aux solutions énergétiques, conçu pour présenter les services, l’expertise et les engagements de l’entreprise.",
     tech: ["Next.js", "NestJS", "MySQL", "Tailwind CSS"],
     link: "https://upesenergie.com/",
+    thumbnail: "/images/project-saas.png",
     videoBg:
       "https://res.cloudinary.com/digfptrqs/video/upload/v1786447473/UPES_Energie_w5j1iv.mp4",
   },
@@ -68,6 +74,7 @@ export const projectsData: Project[] = [
       "Plateforme e-commerce dédiée aux trottinettes électriques et solutions de mobilité urbaine, avec une interface moderne et intuitive.",
     tech: ["Next.js", "NestJS", "MySQL", "Tailwind CSS"],
     link: "https://moltrottinette.com/",
+    thumbnail: "/images/project-ecommerce.png",
     videoBg:
       "https://res.cloudinary.com/digfptrqs/video/upload/v1786447669/Moltroutinette_q98wbw.mp4",
   },
@@ -79,6 +86,7 @@ export const projectsData: Project[] = [
       "Site web moderne pour un restaurant, permettant de découvrir le menu, les produits et les offres, avec une expérience adaptée à la commande en ligne.",
     tech: ["Next.js", "Laravel", "MySQL", "Tailwind CSS"],
     link: "https://letacosito.com/",
+    thumbnail: "/images/project-mobile.png",
     videoBg:
       "https://res.cloudinary.com/digfptrqs/video/upload/v1786447914/letacosito_ficml5.mp4",
   },
@@ -90,6 +98,7 @@ export const projectsData: Project[] = [
       "Plateforme de référence au Maroc qui connecte les particuliers avec des prestataires de services à domicile fiables et qualifiés.",
     tech: ["Next.js", "NestJS", "MySQL", "Tailwind CSS"],
     link: "https://mahtaaj.com/",
+    thumbnail: "/images/project-saas.png",
     videoBg:
       "https://res.cloudinary.com/digfptrqs/video/upload/v1786448307/mahtaaj_mrfrl6.mp4",
   },
@@ -142,7 +151,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative w-full min-h-screen bg-[#080808] text-white pt-24 pb-16 sm:pt-28 sm:pb-20 px-6 sm:px-12 flex flex-col justify-between items-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
+      className="relative w-full min-h-fit md:min-h-screen bg-[#080808] text-white py-16 sm:py-20 md:py-24 px-6 sm:px-12 flex flex-col justify-between items-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
     >
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E50914]/5 blur-[180px] rounded-full pointer-events-none z-0" />
@@ -240,29 +249,17 @@ export default function ProjectsSection() {
             transition={{ duration: 0.35, ease: "easeInOut" }}
             className="bg-[#0d0d0d] border border-zinc-800/80 rounded-3xl p-4 sm:p-5 shadow-2xl flex flex-col gap-3"
           >
-            {/* Embedded Video Cadre Frame */}
-            {currentProject.videoBg ? (
-              <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-zinc-800/80 bg-black shadow-inner">
-                <video
-                  key={`video-mobile-${currentProject.id}`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="none"
-                  className="w-full h-full object-cover"
-                  src={currentProject.videoBg}
-                >
-                  <source src={currentProject.videoBg} type="video/mp4" />
-                </video>
-              </div>
-            ) : (
-              <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-zinc-800/80 bg-zinc-950 flex items-center justify-center">
-                <span className="text-3xl font-black text-white/20 uppercase tracking-widest">
-                  {currentProject.title}
-                </span>
-              </div>
-            )}
+            {/* Embedded Static Preview Cadre Frame (0 Video Overhead on Mobile) */}
+            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-zinc-800/80 bg-zinc-950 shadow-inner">
+              <Image
+                src={currentProject.thumbnail}
+                alt={currentProject.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover transition-transform duration-500 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            </div>
 
             {/* Content Details */}
             <div className="pt-1">

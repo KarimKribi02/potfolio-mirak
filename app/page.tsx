@@ -62,15 +62,15 @@ export default function Home() {
       <FixedOverlay />
 
       {/* 2. Hero Section (Snap Section 1) */}
-      <div className="md:snap-start md:snap-always w-full min-h-screen relative">
+      <div className="md:snap-start md:snap-always w-full min-h-fit md:min-h-screen relative">
         <HeroSection onOpenVideoModal={() => setVideoModalOpen(true)} />
       </div>
 
-      {/* 3. Sections Container (Instant Visibility & No Scroll-Lock) */}
+      {/* 3. Sections Container (Dynamic Height on Mobile, Snap on Desktop) */}
       {revealSections.map((sec) => (
         <div
           key={sec.id}
-          className="md:snap-start md:snap-always w-full min-h-screen flex flex-col justify-center relative opacity-100"
+          className="md:snap-start md:snap-always w-full min-h-fit md:min-h-screen flex flex-col justify-center relative opacity-100"
         >
           {sec.component}
         </div>

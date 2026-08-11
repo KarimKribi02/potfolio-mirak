@@ -82,7 +82,7 @@ export default function Home() {
   return (
     <main
       id="main-container"
-      className="relative h-screen overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-[#080808] text-white selection:bg-[#E50914] selection:text-white overflow-x-hidden"
+      className="relative min-h-[100dvh] md:h-screen overflow-x-hidden md:overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth bg-[#080808] text-white selection:bg-[#E50914] selection:text-white"
     >
       {/* 1. Fixed UI Overlay Frame (Navbar, Social Sidebar, Scroll Line, Copyright) */}
       <FixedOverlay />

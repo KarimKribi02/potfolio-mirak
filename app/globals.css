@@ -111,4 +111,23 @@
     background-color: #080808 !important;
     background-image: none !important;
   }
+
+  *,
+  ::before,
+  ::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Fix iOS Chrome & Safari WebKit Compositing & GPU Layer Memory */
+@supports (-webkit-touch-callout: none) {
+  section,
+  main,
+  div {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
 }

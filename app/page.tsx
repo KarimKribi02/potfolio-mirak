@@ -1,18 +1,38 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import FixedOverlay from "@/components/FixedOverlay";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import WorkExperienceSection from "@/components/WorkExperienceSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import PartnersSection from "@/components/PartnersSection";
-import ContactSection from "@/components/ContactSection";
 import { ProjectItem } from "@/components/Projects";
-import Footer from "@/components/Footer";
-import Modals from "@/components/Modals";
+
+// Dynamically import heavy below-the-fold sections for instant initial LCP
+const AboutSection = dynamic(() => import("@/components/AboutSection"), {
+  loading: () => <div className="min-h-[50vh] w-full" />,
+});
+const ProjectsSection = dynamic(() => import("@/components/ProjectsSection"), {
+  loading: () => <div className="min-h-[50vh] w-full" />,
+});
+const WorkExperienceSection = dynamic(
+  () => import("@/components/WorkExperienceSection"),
+  {
+    loading: () => <div className="min-h-[50vh] w-full" />,
+  }
+);
+const TestimonialsSection = dynamic(
+  () => import("@/components/TestimonialsSection"),
+  {
+    loading: () => <div className="min-h-[50vh] w-full" />,
+  }
+);
+const PartnersSection = dynamic(() => import("@/components/PartnersSection"), {
+  loading: () => <div className="min-h-[50vh] w-full" />,
+});
+const ContactSection = dynamic(() => import("@/components/ContactSection"), {
+  loading: () => <div className="min-h-[50vh] w-full" />,
+});
+const Footer = dynamic(() => import("@/components/Footer"));
+const Modals = dynamic(() => import("@/components/Modals"), { ssr: false });
 
 export default function Home() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
@@ -61,7 +81,7 @@ export default function Home() {
       {/* 1. Fixed UI Overlay Frame (Navbar, Social Sidebar, Scroll Line, Copyright) */}
       <FixedOverlay />
 
-      {/* 2. Hero Section (Snap Section 1) */}
+      {/* 2. Hero Section (Snap Section 1 - Instant First Paint) */}
       <div className="md:snap-start md:snap-always w-full min-h-fit md:min-h-screen relative">
         <HeroSection onOpenVideoModal={() => setVideoModalOpen(true)} />
       </div>

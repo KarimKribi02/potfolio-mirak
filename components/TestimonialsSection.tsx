@@ -112,12 +112,9 @@ export default function TestimonialsSection() {
       id="testimonials"
       className="relative w-full min-h-fit md:min-h-screen bg-[#080808] text-white py-16 sm:py-20 md:py-24 flex items-center justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
     >
-      {/* Background Image with Dark Vignette Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center filter brightness-30 contrast-125 transition-all duration-700 pointer-events-none"
-        style={{ backgroundImage: "url('/images/testimonials-bg.png')" }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#080808]/95 via-[#080808]/75 to-[#080808]/95 pointer-events-none" />
+      {/* Pure CSS Ambient Background Gradients (0 Network Payload) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-neutral-950/80 to-[#080808] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(229,9,20,0.08),rgba(255,255,255,0))] pointer-events-none" />
 
       {/* Subtle radial glow */}
       <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[500px] h-[500px] bg-[#E50914]/5 blur-[180px] rounded-full pointer-events-none" />

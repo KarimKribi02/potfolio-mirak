@@ -54,12 +54,9 @@ export default function ContactSection() {
       id="contact"
       className="relative w-full min-h-fit md:min-h-screen bg-[#080808] text-white py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-12 flex items-center justify-center font-sans overflow-hidden border-t border-neutral-900/60 selection:bg-[#E50914] selection:text-white"
     >
-      {/* Background Image with Dark Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center filter brightness-25 contrast-125 transition-all duration-700 pointer-events-none"
-        style={{ backgroundImage: "url('/images/contact-bg.png')" }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#080808]/95 via-[#080808]/80 to-[#080808]/95 pointer-events-none" />
+      {/* Pure CSS Ambient Background Gradients (0 Network Payload) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-neutral-950/90 to-[#080808] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_120%,rgba(229,9,20,0.06),rgba(255,255,255,0))] pointer-events-none" />
 
       {/* Content Container Grid */}
       <div className="max-w-6xl mx-auto w-full px-2 sm:px-6 py-6 sm:py-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
